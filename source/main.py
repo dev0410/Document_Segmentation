@@ -1,6 +1,7 @@
 import cv2
 import argparse
 from segment import *
+from transform import *
 
 
 def image_process(image_path, result_path):
@@ -25,6 +26,9 @@ def image_process(image_path, result_path):
     # remove background of image
     img = remove_background(img, contour)
     # show_img(img)
+
+    # get shape information of document
+    size, center, angle, w, h = get_shape(contour)
 
 
 if __name__ == '__main__':
