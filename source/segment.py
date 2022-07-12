@@ -50,3 +50,23 @@ def get_contour(img):
     )[-1]
 
     return contour
+
+
+def remove_background(img, contour):
+    """
+    ### description
+    remove background of image and remain object
+
+    ### parameters
+    img: original image with document and background
+    contour: region of object for remain
+
+    ### return values
+    res: image without background
+    """
+    # make a mask with the rectangle
+    mask = np.zeros((img.shape[0], img.shape[1]), np.uint8)
+    cv2.drawContours(mask, [contour], -1, 255, cv2.FILLED)
+
+	# apply mask to original image
+    return cv2.bitwise_and(img, img, mask=mask)

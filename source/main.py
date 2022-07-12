@@ -1,7 +1,6 @@
 import cv2
 import argparse
 from segment import *
-from transform import *
 
 
 def image_process(image_path, result_path):
@@ -22,6 +21,10 @@ def image_process(image_path, result_path):
 
     # get contour of document
     contour = get_contour(img)
+
+    # remove background of image
+    img = remove_background(img, contour)
+    # show_img(img)
 
 
 if __name__ == '__main__':
