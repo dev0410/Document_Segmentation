@@ -30,6 +30,14 @@ def image_process(image_path, result_path):
     # get shape information of document
     size, center, angle, w, h = get_shape(contour)
 
+    # get sub region of image
+    img = cv2.getRectSubPix(img, (size, size), center)
+    # show_img(img)
+
+    # rotate image
+    img = rotate_img(img, (size / 2, size / 2), angle, w, h)
+    # show_img(img)
+
 
 if __name__ == '__main__':
     # set argument
