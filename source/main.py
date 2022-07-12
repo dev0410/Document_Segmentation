@@ -38,6 +38,9 @@ def image_process(image_path, result_path):
     img = rotate_img(img, (size / 2, size / 2), angle, w, h)
     # show_img(img)
 
+    # save image
+    cv2.imwrite(result_path, img)
+
 
 if __name__ == '__main__':
     # set argument
